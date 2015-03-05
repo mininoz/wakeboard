@@ -1,0 +1,25 @@
+Board:
+  brand
+  price
+  size
+  year
+  Material
+Boot:
+  brand
+  price
+  size
+Booth:
+  brand
+  price
+  size
+Booth:
+  brand
+  price
+Other:
+  brand
+  price
+Seller:
+  line
+  facebook
+  phone
+  email
