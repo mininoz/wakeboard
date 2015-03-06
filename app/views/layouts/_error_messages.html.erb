@@ -1,0 +1,11 @@
+<% if f.errors.any? %>
+  <div id="error_explanation" class="alert alert-warning">
+    <!-- <h2><%= pluralize(f.errors.count, "error") %> prohibited this mark from being saved:</h2> -->
+
+    <ul>
+    <% f.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
