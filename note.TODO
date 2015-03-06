@@ -23,3 +23,10 @@ Seller:
   facebook
   phone
   email
+
+Products:
+  title
+  price
+  description
+  status selling, sold
+  seller_id
