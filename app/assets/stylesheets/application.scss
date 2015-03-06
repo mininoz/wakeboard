@@ -1,2 +1,82 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+body {
+  font-size: 1.8em;
+  background: #f3f3f4;
+}
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+
+  .ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 4px 0px 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 14px 15px 7px;
+    // height: 48px;
+
+    h2, h3, h4{
+      margin: 0 0 10px;
+    }
+  }
+
+  .ibox-content {
+    background: #ffffff;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0px;
+  }
+  .no-padding-l {
+    padding-left: 0;
+  }
+  .no-padding-r {
+    padding-right: 0;
+  }
+  .no-padding {
+    padding: 0;
+
+    .padding-20 {
+      padding: 15px 20px 20px 20px;
+    }
+  }
+
+  .bg-info, .bg-grey {
+    background: #f9f9f9;
+  }
+
+  .bg-info {
+    background: #d9edf7;
+  }
+
+  .bg-success {
+    background: #dff0d8;
+  }
+}
+
+table.text-both-center {
+  tr {
+    th {
+      text-align: right;
+    }
+    td {
+      text-align: left;
+    }
+  }
+
+}

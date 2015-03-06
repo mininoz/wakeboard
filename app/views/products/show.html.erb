@@ -1,2 +1,35 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="ibox">
+  <div class="ibox-title">
+    Product
+    <span class="pull-right">
+      <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-default btn-xs' %>
+    </span>
+  </div>
+  <div class="ibox-content">
+    <div class="row">
+      <!-- Photo -->
+      <div class="col-md-3">
+        Photo
+      </div>
+
+      <!-- Details -->
+      <div class="col-md-7">
+        <table class="table text-both-center">
+          <tr>
+            <th width="200px">Price</th>
+            <td><%= @product.price %></td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td><%= @product.description %></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Seller -->
+      <div class="col-md-3">
+
+      </div>
+    </div>
+  </div>
+</div>
