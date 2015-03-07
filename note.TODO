@@ -8,10 +8,12 @@ Boot:
   brand
   price
   size
-Booth:
+Skate:
   brand
   price
   size
+  year
+  Material
 Booth:
   brand
   price

@@ -1,2 +1,14 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<span class="pull-right">
+  <%= link_to "ลงประกาศ", new_product_path(type: 'board'), class: 'btn btn-default' %>
+</span>
+<div class="clearfix"></div>
+<div class="ibox">
+  <div class="ibox-title">
+    สินค้าขายล่าสุด
+  </div>
+  <div class="ibox-content">
+    <% @products.each do |product| %>
+      <%= product.title %>
+    <% end %>
+  </div>
+</div>

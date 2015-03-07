@@ -26,4 +26,5 @@ class ProductTest < ActiveSupport::TestCase
     assert_not product.valid?
     assert_equal [:price], product.errors.keys
   end
+
 end

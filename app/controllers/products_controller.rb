@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
   before_action :get_product, only: [:show, :edit, :update, :destroy]
+  # before_action :set_productable
   def index
+    @products = Product.all
   end
 
   def new
-    @product = Product.new
+    get_productable
+    @productable = @klass.new
+    @productable.build_product
   end
 
   def create
@@ -42,6 +46,17 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :price, :description, :active, :sold)
+    params.require(:product).permit(:title, :price, :description, :active, :sold,
+        board_attribures: [:id, :size, :year, :material]
+      )
+  end
+
+  def set_productable
+    klass = [Board].detect { |c| params[:type]}
+    @proudctable = klass.new
+  end
+
+  def get_productable
+    @klass = params[:type].singularize.classify.constantize
   end
 end
