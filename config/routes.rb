@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'products#index'
-  resources :products
+  root 'listings#index'
+  resources :listings
 
-  get 'products/new/:type', to: 'products#new'
-  resources :boards
+  resources :wake_board, controller: 'listings', type: 'WakeBoard'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

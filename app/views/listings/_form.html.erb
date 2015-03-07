@@ -1,0 +1,35 @@
+<%= form_for @listing, html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'layouts/error_messages', f: f.object %>
+
+  <!-- form_for @object, html: { multipart: true }, do |f| -->
+  <!-- form_for @object, html: { class: "classname" }, do |f| -->
+  <%= hidden_field_tag :type, params[:type] %>
+  <div class="form-group">
+    <%= f.label :title, "หัวเรื่อง", class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, "ราคา", class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "รายละเอียด", class: 'col-md-2 control-label' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= render "form_#{@type.underscore}", f: f %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit  'ลงประกาศ', class: 'btn btn-success', data: {disable_with:  'ลงประกาศ...'} %>
+    </div>
+  </div>
+<% end %>

@@ -11,35 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306211157) do
+ActiveRecord::Schema.define(version: 20150305231204) do
 
-  create_table "boards", force: :cascade do |t|
-    t.integer  "size"
-    t.integer  "year"
-    t.text     "material"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "boots", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
+  create_table "listings", force: :cascade do |t|
     t.string   "title"
-    t.decimal  "price",            default: 0.0
+    t.decimal  "price",               default: 0.0
     t.text     "description"
-    t.boolean  "active",           default: true
-    t.boolean  "sold",             default: false
+    t.string   "wake_board_brand"
+    t.integer  "wake_board_size"
+    t.string   "wake_board_material"
+    t.integer  "wake_board__year"
+    t.string   "boot_brand"
+    t.integer  "boot_size"
+    t.string   "wake_skate_brand"
+    t.integer  "wake_skate_size"
+    t.integer  "wake_board_year"
+    t.string   "helmet_brand"
+    t.string   "helmet_size"
+    t.string   "vest_brand"
+    t.string   "vest_size"
+    t.boolean  "active",              default: true
+    t.boolean  "sold",                default: false
     t.integer  "seller_id"
-    t.integer  "productable_id"
-    t.string   "productable_type"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "type"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
-  add_index "products", ["productable_type", "productable_id"], name: "index_products_on_productable_type_and_productable_id"
-  add_index "products", ["seller_id"], name: "index_products_on_seller_id"
+  add_index "listings", ["seller_id"], name: "index_listings_on_seller_id"
 
 end

@@ -7,8 +7,8 @@ one:
   active: true
   sold: false
   seller_id:
-  productable_id:
-  productable_type: Productable
+  listable_id:
+  listable_type: Board
 
 two:
   title: MyString
@@ -17,5 +17,5 @@ two:
   active: true
   sold: false
   seller_id:
-  productable_id:
-  productable_type: Productable
+  listable_id:
+  listable_type: Board

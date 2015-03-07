@@ -1,8 +1,8 @@
 <div class="ibox">
   <div class="ibox-title">
-    Product
+    รายละเอียดสินค้า
     <span class="pull-right">
-      <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-default btn-xs' %>
+      <%= link_to "Edit", send("edit_#{params[:type].underscore}_path", @listing), class: 'btn btn-default btn-xs' %>
     </span>
   </div>
   <div class="ibox-content">
@@ -17,11 +17,11 @@
         <table class="table text-both-center">
           <tr>
             <th width="200px">Price</th>
-            <td><%= @product.price %></td>
+            <td><%= @listing.price %></td>
           </tr>
           <tr>
             <th>Description</th>
-            <td><%= @product.description %></td>
+            <td><%= @listing.description %></td>
           </tr>
         </table>
       </div>

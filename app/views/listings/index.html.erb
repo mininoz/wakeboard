@@ -1,5 +1,5 @@
 <span class="pull-right">
-  <%= link_to "ลงประกาศ", new_product_path(type: 'board'), class: 'btn btn-default' %>
+  <%= link_to "ลงประกาศ", new_wake_board_path, class: 'btn btn-default' %>
 </span>
 <div class="clearfix"></div>
 <div class="ibox">
@@ -7,8 +7,8 @@
     สินค้าขายล่าสุด
   </div>
   <div class="ibox-content">
-    <% @products.each do |product| %>
-      <%= product.title %>
+    <% @listings.each do |listing| %>
+      <%= listing.title %>
     <% end %>
   </div>
 </div>
