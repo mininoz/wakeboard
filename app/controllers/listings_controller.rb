@@ -46,9 +46,15 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-
-    params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
+    if type == 'WakeBoard'
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
         :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material )
+    elsif type == 'WakeSkate'
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
+        :wake_skate_brand, :wake_skate_size, :wake_skate_year, :wake_skate_material )
+    else
+      arams.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold )
+    end
   end
 
    def set_type

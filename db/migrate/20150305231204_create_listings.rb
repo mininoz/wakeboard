@@ -9,7 +9,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :wake_board_brand
       t.integer :wake_board_size
       t.string :wake_board_material
-      t.integer :wake_board__year
+      t.integer :wake_board_year
 
       #boot
       t.string :boot_brand
@@ -18,8 +18,8 @@ class CreateListings < ActiveRecord::Migration
       #skate
       t.string :wake_skate_brand
       t.integer :wake_skate_size
-      t.string :wake_board_material
-      t.integer :wake_board_year
+      t.string :wake_skate_material
+      t.integer :wake_skate_year
 
       #Helmet
       t.string :helmet_brand

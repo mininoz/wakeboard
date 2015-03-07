@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root 'listings#index'
   resources :listings
 
-  resources :wake_board, controller: 'listings', type: 'WakeBoard'
+  resources :wake_boards, controller: 'listings', type: 'WakeBoard'
+  resources :wake_skates, controller: 'listings', type: 'WakeSkate'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
