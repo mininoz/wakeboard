@@ -21,14 +21,14 @@
       </div>
 
       <!-- Details -->
-      <div class="col-md-7">
+      <div class="col-md-6">
         <h4><%= @listing.type.underscore.humanize.titleize %></h4>
         <%= render "listings/details/#{@type.underscore}", listing: @listing %>
       </div>
 
       <!-- Seller -->
-      <div class="col-md-3">
-
+      <div class="col-md-2">
+        <%= @listing.seller.email %>
       </div>
     </div>
   </div>
