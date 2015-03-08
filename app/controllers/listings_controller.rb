@@ -42,7 +42,8 @@ class ListingsController < ApplicationController
   private
 
   def get_listing
-    @listing = Listing.find params[:id]
+    @listing = type_class.find params[:id]
+    # @listing = Listing.find params[:id]
   end
 
   def listing_params
@@ -52,8 +53,11 @@ class ListingsController < ApplicationController
     elsif type == 'WakeSkate'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
         :wake_skate_brand, :wake_skate_size, :wake_skate_year, :wake_skate_material )
+    elsif type == 'Package'
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
+        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material, :boot_brand, :boot_size )
     else
-      arams.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold )
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold )
     end
   end
 

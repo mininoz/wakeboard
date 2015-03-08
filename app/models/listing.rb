@@ -6,6 +6,6 @@ class Listing < ActiveRecord::Base
   validates :price, numericality: { greater_than_or_equal_to: 0}
 
   def self.types
-    %w[WakeBoard WakeSkate]
+    %w[WakeBoard WakeSkate Package]
   end
 end

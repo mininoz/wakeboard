@@ -1,11 +1,19 @@
 <div class="ibox">
   <div class="ibox-title">
-    รายละเอียดสินค้า
+    <span class="pull-left">
+      <h3>รายละเอียดสินค้า</h3>
+    </span>
     <span class="pull-right">
       <%= link_to "Edit", send("edit_#{params[:type].underscore}_path", @listing), class: 'btn btn-default btn-xs' %>
     </span>
+    <div class="clearfix"></div>
   </div>
   <div class="ibox-content">
+    <div class="row mg-b-20">
+      <div class="col-md-12">
+        <h4><%= @listing.title %></h4>
+      </div>
+    </div>
     <div class="row">
       <!-- Photo -->
       <div class="col-md-3">
@@ -14,16 +22,8 @@
 
       <!-- Details -->
       <div class="col-md-7">
-        <table class="table text-both-center">
-          <tr>
-            <th width="200px">Price</th>
-            <td><%= @listing.price %></td>
-          </tr>
-          <tr>
-            <th>Description</th>
-            <td><%= @listing.description %></td>
-          </tr>
-        </table>
+        <h4><%= @listing.type.underscore.humanize.titleize %></h4>
+        <%= render "listings/details/#{@type.underscore}", listing: @listing %>
       </div>
 
       <!-- Seller -->
