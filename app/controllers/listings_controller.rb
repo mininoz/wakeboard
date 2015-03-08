@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = type_class.new
+    5.times { @listing.photos.build }
   end
 
   def create
@@ -23,6 +24,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    5.times { @listing.photos.build }
   end
 
   def update
@@ -50,16 +52,21 @@ class ListingsController < ApplicationController
   def listing_params
     if type == 'WakeBoard'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
-        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material )
+        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material,
+        photos_attributes:[:id, :image, :_destroy])
     elsif type == 'WakeSkate'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
-        :wake_skate_brand, :wake_skate_size, :wake_skate_year, :wake_skate_material )
+        :wake_skate_brand, :wake_skate_size, :wake_skate_year, :wake_skate_material,
+        photos_attributes:[:id, :image, :_destroy])
     elsif type == 'Package'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
-        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material, :boot_brand, :boot_size )
+        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material, :boot_brand, :boot_size,
+        photos_attributes:[:id, :image, :_destroy])
     else
-      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold )
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
+        photos_attributes:[:id, :image, :_destroy])
     end
+
   end
 
    def set_type

@@ -25,6 +25,15 @@
     </div>
   </div>
 
+  <%= f.fields_for :photos do |p| %>
+    <div class="form-group">
+      <%= p.label :image, "รูป", class: 'col-md-2 control-label' %>
+      <div class="col-md-10">
+        <%= p.file_field :image, class: '' %>
+      </div>
+    </div>
+  <% end %>
+
   <%= render "form_#{@type.underscore}", f: f %>
 
   <hr>

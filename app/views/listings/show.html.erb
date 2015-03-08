@@ -17,7 +17,9 @@
     <div class="row">
       <!-- Photo -->
       <div class="col-md-3">
-        Photo
+        <% @listing.photos.each do |photo| %>
+          <%= image_tag photo.image.url(:medium), class: 'img-responsive' %>
+        <% end %>
       </div>
 
       <!-- Details -->
