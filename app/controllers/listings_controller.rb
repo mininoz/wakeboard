@@ -62,6 +62,10 @@ class ListingsController < ApplicationController
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
         :boot_brand, :boot_size, :boot_year,
         photos_attributes:[:id, :image, :_destroy])
+    elsif type == 'Helmet'
+      params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
+        :helmet_brand, :helmet_size,
+        photos_attributes:[:id, :image, :_destroy])
     elsif type == 'Package'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
         :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material, :boot_brand, :boot_size,

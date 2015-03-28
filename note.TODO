@@ -15,6 +15,9 @@ Skate:
   size
   year
   Material
+Helmet:
+  brand
+  price
 Other:
   brand
   price
