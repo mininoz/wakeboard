@@ -8,15 +8,13 @@ Boot:
   brand
   price
   size
+  year
 Skate:
   brand
   price
   size
   year
   Material
-Booth:
-  brand
-  price
 Other:
   brand
   price

@@ -9,6 +9,6 @@ class Listing < ActiveRecord::Base
   validates :seller_id, presence: true
 
   def self.types
-    %w[WakeBoard WakeSkate Package]
+    %w[WakeBoard WakeSkate Package Boot]
   end
 end

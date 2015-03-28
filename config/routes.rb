@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :wake_boards, controller: 'listings', type: 'WakeBoard'
   resources :wake_skates, controller: 'listings', type: 'WakeSkate'
+  resources :boots, controller: 'listings', type: 'Boot'
   resources :packages, controller: 'listings', type: 'Package'
 
   # The priority is based upon order of creation: first created -> highest priority.
