@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "listings";
 
 
 body {
@@ -81,5 +82,8 @@ table.text-both-center {
       text-align: left;
     }
   }
+}
 
+hr.small-margin {
+  margin: 10px 0;
 }

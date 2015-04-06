@@ -19,9 +19,31 @@
   <div class="ibox-title">
     สินค้าขายล่าสุด
   </div>
-  <div class="ibox-content">
+  <div class="ibox-content listing-lists">
     <% @listings.each do |listing| %>
-      <p><%= link_to listing.title, send("#{listing.type.underscore}_path", listing) %></p>
+      <div class="row">
+        <div class="col-md-2">
+          <%= link_to send("#{listing.type.underscore}_path", listing) do %>
+            <%= image_tag listing.photos.first.image(:thumb), class: 'img-responsive listing-image' if listing.photos.length > 0 %>
+          <% end %>
+          <hr class="small-margin">
+          <div class="listing-price">
+            <span class="listing-label">ราคา</span>
+            <span class="listing-value"><%= number_to_currency listing.price, unit: '' %></span>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h4 class="listing-title">
+            <span class="label label-info"><%= listing.type %></span>
+            <%= link_to listing.title, send("#{listing.type.underscore}_path", listing) %>
+          </h4>
+          <p><strong></strong> <%= listing.description %> </p>
+          <p><strong>วันที่ประกาศ:</strong> <%= listing.created_at %> </p>
+        </div>
+      </div>
+      <hr>
+
+
     <% end %>
   </div>
 </div>
