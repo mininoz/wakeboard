@@ -24,13 +24,15 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    5.times { @listing.photos.build }
+
+    (5 - @listing.photos.length).times { @listing.photos.build }
   end
 
   def update
     if @listing.update listing_params
       redirect_to @listing
     else
+      (5 - @listing.photos.length).times { @listing.photos.build }
       render :edit
     end
   end

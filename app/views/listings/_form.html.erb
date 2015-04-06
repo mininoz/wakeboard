@@ -1,8 +1,11 @@
-<%= form_for @listing, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @listing, html: { class: 'form-horizontal', multipart: true } do |f| %>
   <%= render 'layouts/error_messages', f: f.object %>
 
   <!-- form_for @object, html: { multipart: true }, do |f| -->
   <!-- form_for @object, html: { class: "classname" }, do |f| -->
+
+
+  <%= @listing.photos.length %>
   <%= hidden_field_tag :type, params[:type] %>
   <div class="form-group">
     <%= f.label :title, "หัวเรื่อง", class: 'col-md-2 control-label' %>
@@ -26,12 +29,19 @@
   </div>
 
   <%= f.fields_for :photos do |p| %>
-    <div class="form-group">
-      <%= p.label :image, "รูป", class: 'col-md-2 control-label' %>
-      <div class="col-md-10">
-        <%= p.file_field :image, class: '' %>
+    <% if p.object.persisted? %>
+      <div class="col-md-offset-2 col-md-10">
+        <%= image_tag p.object.image.url(:thumb)  %>
+        <%= p.check_box :_destroy %>  ลบ
       </div>
-    </div>
+    <% else %>
+      <div class="form-group">
+        <%= p.label :image, "รูป", class: 'col-md-2 control-label' %>
+        <div class="col-md-10">
+          <%= p.file_field :image, class: '' %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
   <%= render "form_#{@type.underscore}", f: f %>
