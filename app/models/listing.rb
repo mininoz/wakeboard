@@ -14,6 +14,12 @@ class Listing < ActiveRecord::Base
     %w[WakeBoard WakeSkate Package Boot Helmet]
   end
 
+  def year
+  end
+
+  def brand
+  end
+
   # private
   # def maximum_photos
   #   errors.add(:base, "You must provide at least two options") if photos.length > 3

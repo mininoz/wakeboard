@@ -1,0 +1,37 @@
+<%= form_tag wake_boards_path, method: :get, class: '' do %>
+  <div class="form-group">
+    <label for="">Price</label>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <%= text_field_tag :price_from ,params[:price_from], class: 'form-control input-sm price_from', placeholder: 'From' %>
+      </div>
+      <div class="col-md-6">
+        <%= text_field_tag :price_to ,params[:price_to], class: 'form-control input-sm price_to', placeholder: 'To' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="">Year</label>
+    <%= text_field_tag :board_year , params[:board_year], class: 'form-control input-sm board_year', placeholder: 'year' %>
+  </div>
+  <div class="form-group">
+    <label for="">Brand</label>
+    <%= text_field_tag :board_brand , params[:board_brand], class: 'form-control input-sm board_brand', placeholder: 'brand' %>
+  </div>
+  <div class="form-group">
+    <label for="">Size</label>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <%= text_field_tag :board_size_from , params[:board_size_from], class: 'form-control input-sm board_size_from', placeholder: 'From' %>
+      </div>
+      <div class="col-md-6">
+        <%= text_field_tag :board_size_to , params[:board_size_to], class: 'form-control input-sm board_size_to' , placeholder: 'To' %>
+      </div>
+    </div>
+  </div>
+
+  <hr class="margin-small">
+  <button type="submit" class="btn btn-default">Search</button>
+  <%= link_to "reset", listings_path, class: 'btn btn-link' %>
+<% end %>

@@ -2,7 +2,47 @@ class ListingsController < ApplicationController
   before_action :get_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_type
   def index
-    @listings = Listing.all
+    @listings = Listing.where("1=1")
+    @listings = @listings.where('title like ?', "%#{params[:title]}%") if params[:title].present?
+    @listings = @listings.where('price >= ?', params[:price_from]) if params[:price_from].present?
+    @listings = @listings.where('price <= ?', params[:price_to]) if params[:price_to].present?
+
+    if type == 'WakeBoard'
+      @listings = @listings.where(type: type)
+      @listings = @listings.where(wake_board_year: params[:board_year]) if params[:board_year].present?
+      @listings = @listings.where(wake_board_brand: params[:board_brand]) if params[:board_brand].present?
+      @listings = @listings.where('wake_board_size >= ?', params[:board_size_from]) if params[:board_size_from].present?
+      @listings = @listings.where('wake_board_size <= ?', params[:board_size_to]) if params[:board_size_to].present?
+    elsif type == 'WakeSkate'
+      @listings = @listings.where(type: type)
+      @listings = @listings.where(wake_skate_year: params[:board_year]) if params[:board_year].present?
+      @listings = @listings.where(wake_skate_brand: params[:board_brand]) if params[:board_brand].present?
+      @listings = @listings.where('wake_skate_size >= ?', params[:board_size_from]) if params[:board_size_from].present?
+      @listings = @listings.where('wake_skate_size <= ?', params[:board_size_to]) if params[:board_size_to].present?
+    elsif type == 'Boot'
+      @listings = @listings.where(type: type)
+      @listings = @listings.where(boot_year: params[:boot_year]) if params[:boot_year].present?
+      @listings = @listings.where(boot_brand: params[:boot_brand]) if params[:boot_brand].present?
+      @listings = @listings.where('boot_size >= ?', params[:boot_size_from]) if params[:boot_size_from].present?
+      @listings = @listings.where('boot_size <= ?', params[:boot_size_to]) if params[:boot_size_to].present?
+    elsif type == 'Package'
+      @listings = @listings.where(type: type)
+      @listings = @listings.where(wake_board_year: params[:board_year]) if params[:board_year].present?
+      @listings = @listings.where(wake_board_brand: params[:board_brand]) if params[:board_brand].present?
+      @listings = @listings.where('wake_board_size >= ?', params[:board_size_from]) if params[:board_size_from].present?
+      @listings = @listings.where('wake_board_size <= ?', params[:board_size_to]) if params[:board_size_to].present?
+      @listings = @listings.where(boot_year: params[:boot_year]) if params[:boot_year].present?
+      @listings = @listings.where(boot_brand: params[:boot_brand]) if params[:boot_brand].present?
+      @listings = @listings.where('boot_size >= ?', params[:boot_size_from]) if params[:boot_size_from].present?
+      @listings = @listings.where('boot_size <= ?', params[:boot_size_to]) if params[:boot_size_to].present?
+    elsif type == 'Helmet'
+      @listings = @listings.where(type: type)
+      @listings = @listings.where(helmet_brand: params[:helmet_brand]) if params[:helmet_brand].present?
+      @listings = @listings.where(helmet_size: params[:helmet_size]) if params[:helmet_size].present?
+    end
+
+
+
   end
 
   def new
@@ -70,7 +110,7 @@ class ListingsController < ApplicationController
         photos_attributes:[:id, :image, :_destroy])
     elsif type == 'Package'
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,
-        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material, :boot_brand, :boot_size,
+        :wake_board_brand, :wake_board_size, :wake_board_year, :wake_board_material,:boot_year, :boot_brand, :boot_size,
         photos_attributes:[:id, :image, :_destroy])
     else
       params.require(type.underscore.to_sym).permit(:title, :price, :description, :active, :sold,

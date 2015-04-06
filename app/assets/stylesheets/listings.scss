@@ -10,9 +10,31 @@
       font-size: 24px;
       float:right;
       font-weight: bold;
+      color: #666;
     }
   }
   .listing-title {
     line-height: 1.5em;
+    .label {
+      font-size: 0.6em;
+    }
+    a {
+      color: #333;
+    }
   }
+
+
+  table.list-details {
+    margin-bottom: 5px;
+    tr {
+      .elements {
+        text-align: left;
+        background: #eee;
+      }
+      th.title-column  {
+        width: 80px;
+      }
+    }
+  }
+
 }

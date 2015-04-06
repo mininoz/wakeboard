@@ -14,36 +14,89 @@
   </div>
 
 </span>
+
 <div class="clearfix"></div>
-<div class="ibox">
-  <div class="ibox-title">
-    สินค้าขายล่าสุด
-  </div>
-  <div class="ibox-content listing-lists">
-    <% @listings.each do |listing| %>
-      <div class="row">
-        <div class="col-md-2">
-          <%= link_to send("#{listing.type.underscore}_path", listing) do %>
-            <%= image_tag listing.photos.first.image(:thumb), class: 'img-responsive listing-image' if listing.photos.length > 0 %>
-          <% end %>
-          <hr class="small-margin">
-          <div class="listing-price">
-            <span class="listing-label">ราคา</span>
-            <span class="listing-value"><%= number_to_currency listing.price, unit: '' %></span>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="ibox">
+      <div class="ibox-title">
+        <h3>Search</h3>
+      </div>
+      <div class="ibox-content">
+
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+          <li role="presentation" class="active"><a href="#wakeboard" wakeskate-controls="wakeboard" role="tab" data-toggle="tab">WakeBoard</a></li>
+          <li role="presentation"><a href="#wakeskate" aria-controls="profile" role="tab" data-toggle="tab">WakeSkate</a></li>
+          <li role="presentation"><a href="#package" aria-controls="package" role="tab" data-toggle="tab">Package</a></li>
+          <li role="presentation"><a href="#boot" aria-controls="boot" role="tab" data-toggle="tab">Boot</a></li>
+          <li role="presentation"><a href="#helmet" aria-controls="helmet" role="tab" data-toggle="tab">Helmet</a></li>
+        </ul>
+        <hr class="margin-small">
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane " id="wakeboard">
+            <%= render partial: 'listings/search/wakeboard' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="wakeskate">
+            <%= render partial: 'listings/search/wakeskate' %>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="package">
+            <%= render partial: 'listings/search/package' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="boot">
+            <%= render partial: 'listings/search/boot' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="helmet">
+            <%= render partial: 'listings/search/helmet' %>
           </div>
         </div>
-        <div class="col-md-10">
-          <h4 class="listing-title">
-            <span class="label label-info"><%= listing.type %></span>
-            <%= link_to listing.title, send("#{listing.type.underscore}_path", listing) %>
-          </h4>
-          <p><strong></strong> <%= listing.description %> </p>
-          <p><strong>วันที่ประกาศ:</strong> <%= listing.created_at %> </p>
-        </div>
+
+
       </div>
-      <hr>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="ibox">
+      <div class="ibox-title">
+        สินค้าขายล่าสุด
+      </div>
+      <div class="ibox-content listing-lists">
+        <% @listings.each do |listing| %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= link_to send("#{listing.type.underscore}_path", listing) do %>
+                <%= image_tag listing.photos.first.image(:thumb), class: 'img-responsive listing-image' if listing.photos.length > 0 %>
+              <% end %>
+              <hr class="small-margin">
+              <div class="listing-price">
+                <span class="listing-label">ราคา</span>
+                <span class="listing-value"><%= number_to_currency listing.price, unit: '', precision: 0 %></span>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <h4 class="listing-title">
+                <span class="label label-info"><%= listing.type %></span>
+                <%= link_to listing.title, send("#{listing.type.underscore}_path", listing) %>
+              </h4>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <%= listing.description %>
+                </div>
+                <div class="col-md-6">
+                  <%= render partial: "listings/list_details/#{listing.type.underscore}", locals: {listing: listing} %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <hr>
 
 
-    <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
