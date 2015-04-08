@@ -1,8 +1,16 @@
 class ListingsController < ApplicationController
   before_action :get_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_type
+
+  after_action :verify_authorized
+
+
   def index
+
     @listings = Listing.where("1=1")
+
+    authorize :listing
+
     @listings = @listings.where('title like ?', "%#{params[:title]}%") if params[:title].present?
     @listings = @listings.where('price >= ?', params[:price_from]) if params[:price_from].present?
     @listings = @listings.where('price <= ?', params[:price_to]) if params[:price_to].present?
@@ -42,16 +50,21 @@ class ListingsController < ApplicationController
     end
 
 
-
   end
 
   def new
     @listing = type_class.new
+
+    authorize :listing
+
     5.times { @listing.photos.build }
   end
 
   def create
     @listing = type_class.new listing_params
+
+    authorize @listing
+
     @listing.seller_id = current_user.id
     if @listing.save
       redirect_to @listing
@@ -61,14 +74,16 @@ class ListingsController < ApplicationController
   end
 
   def show
+    authorize @listing
   end
 
   def edit
-
+    authorize @listing
     (5 - @listing.photos.length).times { @listing.photos.build }
   end
 
   def update
+    authorize @listing
     if @listing.update listing_params
       redirect_to @listing
     else
@@ -77,9 +92,8 @@ class ListingsController < ApplicationController
     end
   end
 
-
-
   def destroy
+    authorize @listing
     @listing.destroy
     redirect_to listings_path
   end
